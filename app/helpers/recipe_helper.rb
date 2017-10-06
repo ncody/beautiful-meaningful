@@ -23,3 +23,12 @@ def seperate_ingredients(form_input)
     "Accept" => "application/json"
   }
   end
+
+
+  def recipe_id_finder(id)
+    response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" +  id + "/information?includeNutrition=false",
+  headers:{
+    "X-Mashape-Key" => "Gv3u7V23s0mshlC7kUEtrveJEZYyp1U2v9hjsnFnQmcVSqSLAf",
+    "Accept" => "application/json"
+  }
+end
