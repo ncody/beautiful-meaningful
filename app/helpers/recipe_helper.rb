@@ -17,7 +17,7 @@ def seperate_ingredients(form_input)
 
   def finder(form_input)
     url = ingredient_url(form_input)
-    response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + url + "&limitLicense=false&number=1&ranking=1",
+    response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + url + "&limitLicense=false&number=1",
   headers:{
     "X-Mashape-Key" => ENV["SPOONACULAR_ACCESS_TOKEN"],
     "Accept" => "application/json"
@@ -26,9 +26,12 @@ def seperate_ingredients(form_input)
 
 
   def recipe_id_finder(id)
-    response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" +  id + "/information?includeNutrition=false",
+    response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id.to_s + "/information?includeNutrition=false",
   headers:{
-    "X-Mashape-Key" => "Gv3u7V23s0mshlC7kUEtrveJEZYyp1U2v9hjsnFnQmcVSqSLAf",
+    "X-Mashape-Key" => ENV["SPOONACULAR_ACCESS_TOKEN"],
     "Accept" => "application/json"
   }
 end
+
+
+

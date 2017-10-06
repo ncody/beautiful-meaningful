@@ -1,27 +1,42 @@
 require 'json'
+
 get '/' do
-  erb :index
+  erb :'/recipes/testing'
 end
 
-post '/recipes' do
-  response = finder(params)
-  p response
-  data = JSON.parse(response)
-  body = data[@raw_body]
-  id = body["id"]
-  session[recipe_id: id]
-  redirect '/recipes'
-end
+# post '/recipes' do
+#   response = finder(params)
+#   data = response.as_json
+#   body_section = data["raw_body"]
+#   json_body = JSON.parse(body_section)
+#   body= json_body[0]
+#   id = body["id"]
+#   title = body["title"]
+#   session[:recipe_title] = title
+#   session[:recipe_id] = id
+#   redirect '/recipes'
+# end
 
-get '/recipes' do
-  recipe_id_finder(session[:recipe_id])
+# get '/recipes' do
+#   p session[:recipe_id]
+#   @title = session[:recipe_title]
+#   response = recipe_id_finder(session[:recipe_id])
+#   p response
+#   data = response.as_json
+#   body_section = data["raw_body"]
+#   body = JSON.parse(body_section)
+#   p "JSON BODY"
+#   p body
 
-end
+#   @instructions = body["instructions"]
+#   extended_ingredients = body["extendedIngredients"]
+#   @ingredients = []
+#   extended_ingredients.each do |ingredient|
+#     @ingredients << ingredient["originalString"]
+#   end
+
+#   erb :'/recipes/show'
+# end
 
 
-# example API request:
-# response = Unirest.get "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=1&ranking=1",
-#   headers:{
-#     "X-Mashape-Key" => "Gv3u7V23s0mshlC7kUEtrveJEZYyp1U2v9hjsnFnQmcVSqSLAf",
-#     "Accept" => "application/json"
-#   }
+
