@@ -1,10 +1,14 @@
 body {
+  margin: 10px;
   background-color: #E1E5F2;
+}
+a {
+  float: left;
 }
 h1 {
   color: #1F7A8C;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2.7em;
   font-family: 'Oxygen', sans-serif;
 }
 h2 {
